@@ -33,8 +33,15 @@ class Fraction:
         denomFin = self.denom * other.denom;
         return Fraction(numFin, denomFin);
     def __truediv__(self, other):
-        numFin = self.num / other.num;
-        denomFin = self.denom / other.denom;
+        numFin = self.num * other.denom;
+        denomFin = self.denom * other.num;
+        i=2
+        while i <= numFin and i <= denomFin:
+            if numFin % i == 0 and denomFin % i == 0:
+                numFin = numFin // i
+                denomFin = denomFin // i
+            else:
+                i = i + 1
         return Fraction(numFin, denomFin);
     def __repr__(self):
         print("Fraction actuel : " + str(self.num) + "/" + str(self.denom));
